@@ -17,9 +17,10 @@ This project is meant to be open for others to create their own Wordle solvers.
 # Challenge/project scope
 Eventually I want to make this open so that others can create their own extensions of the `WordyPlayer` abstract class and test them / compare them against each other. We'll see how that goes.
 
-## Assumptions
-* All words are 5 letters long.
-* There's 6 allowed guesses.
+## Hardcoded Assumptions
+* All words are 5 letters long. This is hardcoded into the WordyEngine class.
+## Softcoded Assumptions
+* There's 6 allowed guesses. This can be edited in the Wordy class.
 
 ## Guess feedback
 Feedback for each guess is packaged in an `ArrayList<int>` object. The Array contains five integers, one for each letter in the guess and in the answer. Each integer can be 0, 1, or 2. If the i-th integer is 0, it means that the i-th letter of the guess is not in the answer word (grey); if it's 1, it means that the i-th letter is in the final answer, but not in that position (yellow); if it's 2, it means that the i-th letter is in the i-th position in the final answer (green).
@@ -66,12 +67,10 @@ Checks the guess against the true answer and returns feedback as per Wordle spec
 * **returns** an array containing information about the guess. See `Wordy Guess Feedback` section.
 * **throws** IllegalArgumentException if the guess does not have five letters, as per Wordle specifications, or if there's no guesses left.
 
-### int getLifeCounter()
-TODO: implement
+### int getGuessesLeft()
 * **returns** how many guesses left there are.
 
 ### String endGame()
-TODO: implement
 Reveals the final word and sets the guess counter to 0. Game cannot continue from here.
 * **returns** the answer word.
 
