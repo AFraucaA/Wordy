@@ -1,0 +1,5 @@
+# Bytecode
+*.class
+
+# IDE stuff?
+.vscode
