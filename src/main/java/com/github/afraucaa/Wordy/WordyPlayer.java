@@ -14,5 +14,5 @@ public abstract class WordyPlayer {
     }
 
     public abstract String newGuess(List<Integer> lastGuessResult, int guessesLeft);
-    public abstract boolean newGame();
+    public abstract void newGame();
 }

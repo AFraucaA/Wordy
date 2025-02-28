@@ -18,7 +18,7 @@ This project is meant to be open for others to create their own Wordle solvers.
 Eventually I want to make this open so that others can create their own extensions of the `WordyPlayer` abstract class and test them / compare them against each other. We'll see how that goes.
 
 ## Hardcoded Assumptions
-* All words are 5 letters long. This is hardcoded into the WordyEngine class.
+* All words are 5 letters long. This is hardcoded into the Wordy, WordyEngine, and UserInputPlayer classes.
 ## Softcoded Assumptions
 * There's 6 allowed guesses. This can be edited in the Wordy class.
 
@@ -83,7 +83,7 @@ Constructor.
 * **List<String>** a list of all guessable but non-candidate words
 * **int** the maximum number of guesses allowed
 
-### boolean newGame()
+### void newGame()
 TODO: implement (or not?)
 Resets the state of the solver, informing it that the previous game ended and a new one is about to begin.
 
@@ -111,6 +111,10 @@ TODO: enforce
 # Future features / TODO
 * Implementation for Wordle engine and game
 * Implementation for user-based solver (i.e. let the user play the game and input guesses into the program through the keyboard)
+* Document UserInputPlayer methods
+* Document all classes
+* DRYing out the logic for checking guess legality?
+  * Modifying WordyPlayer abstract class to guarantee guess legality?
 * Clean up packaging and access restriction practices
 * Test everything
 * Implementation for personal Wordle solver(s)
@@ -120,6 +124,8 @@ TODO: enforce
 # Questions
 * How to load and test the different solver implementations? Something something Java reflection.
 * Do we care to give the solver classes for a means to give up and finish the game early? Prolly not but who knows. 
+  * But consider: as a human player I'd want to be able to play multiple times. What to do? 
+  * Possible answer: make a requestNewGame abstract method that returns false by default, but which UserInputPlayer overrides to request a new game
 
 # Miscellaneous notes
 **2025-02-27** Repo created. I should be studying for midterms right now. *~Adrian*

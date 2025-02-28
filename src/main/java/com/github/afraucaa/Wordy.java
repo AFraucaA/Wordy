@@ -1,7 +1,8 @@
 package com.github.afraucaa;
 
 import com.github.afraucaa.wordy.WordyEngine;
-
+import com.github.afraucaa.wordy.WordyPlayer;
+import com.github.afraucaa.wordysolvers.UserInputPlayer;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,17 +29,16 @@ public class Wordy {
         Logger logger = Logger.getLogger("MyLogger");
 
         // Constants
+        final int WORD_LENGTH = 5;
         final int maxGuesses = 6;
         final Path basePath = Paths.get("").toAbsolutePath().getParent().getParent().getParent();
         final Path candidateWordsPath = basePath.resolve("resources/dictionary/candidates.txt");
         final Path nonCandidateWordsPath = basePath.resolve("resources/dictionary/non_candidates.txt");
 
         
-
-
+        // Populate lists from files
         ArrayList<String> candidateWords;
         ArrayList<String> nonCandidateWords;
-        // Populate lists from files
         candidateWords = readWordsFromFile(candidateWordsPath);
         nonCandidateWords = readWordsFromFile(nonCandidateWordsPath);
 
@@ -46,12 +46,30 @@ public class Wordy {
         System.out.println("Candidate Words: " + candidateWords.size() + " words loaded.");
         System.out.println("Non-Candidate Words: " + nonCandidateWords.size() + " words loaded.");
 
-
+        // Instantiate engine and player
         WordyEngine engine = new WordyEngine(candidateWords, nonCandidateWords, maxGuesses);
-
+        WordyPlayer player = new UserInputPlayer(candidateWords, nonCandidateWords, maxGuesses);
         // To do: design a clever way to select which implementations of WordyPlayer to try
         // Idea: have an editable text file where the user lists all implementations they want to try. The driver would iterate through the file, instantiating each one, and running the tests on it.
-         
+        
+        /* Play a single game */
+
+        // Set up initial conditions for game
+        engine.newGame();
+        player.newGame();
+
+        ArrayList<Integer> feedback = new ArrayList(WORD_LENGTH);
+        for (int i = 0; i < feedback.size(); i += 1) {
+            feedback.set(i, 0);
+        }
+
+        while (engine.getGuessesLeft() > 0) {
+            String guess = player.newGuess(feedback, engine.getGuessesLeft());
+            // TO DO: add guess validation here? At this point, assume guess is legal
+            feedback = engine.checkGuess(guess);
+            // Print stuff here
+
+        }
     }
 
     /**

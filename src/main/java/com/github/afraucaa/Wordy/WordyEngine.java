@@ -10,7 +10,7 @@ public class WordyEngine {
     private final  TreeSet<String> guessableWords; // For checking that guesses are valid. May not actually need?
     private final int maxGuesses;
     private final Random random;
-    private static int WORD_LENGTH = 5;
+    private final int WORD_LENGTH = 5;
 
     private int currentGuessesLeft;
     private String currentWord;
@@ -63,7 +63,7 @@ public class WordyEngine {
      * @return List<Integer> specifying the information about letter matches. See `Guess feedback` section on readme.
      * @throws IllegalArgumentException if no guesses can be made, or if guess word is illegal.
      */
-    public List<Integer> checkGuess(String guess) throws IllegalArgumentException {
+    public ArrayList<Integer> checkGuess(String guess) throws IllegalArgumentException {
         // Check that guess is legal
         if (guess.length() != WORD_LENGTH) {
             throw new IllegalArgumentException("Guess must be " + WORD_LENGTH + "letters long. A guess with " + guess.length() + " characters was passed in.");
