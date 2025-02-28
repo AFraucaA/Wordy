@@ -1,11 +1,11 @@
-package com.github.afraucaa.Wordy;
+package com.github.afraucaa.wordy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.TreeSet;
 
-class WordyEngine {
+public class WordyEngine {
     private final  ArrayList<String> candidateWords; // For generating answer words
     private final  TreeSet<String> guessableWords; // For checking that guesses are valid. May not actually need?
     private final int maxGuesses;

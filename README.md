@@ -36,14 +36,15 @@ Public interface described here.
 ## Wordy
 Driver program for running the game, playing, and or testing game solver algorithms.
 
-Ensures solver inputs are valid.
-
-Ensures number of guesses is respected and that solver and game engine communicate correctly.
+* Ensures solver inputs are valid.
+* Ensures number of guesses is respected and that solver and game engine communicate correctly.
+* Currently responsible for printing user-readable output to the terminal
 
 ### main()
 Reads dictionary from project files. Instantiates WordyEngine object.
 TODO:
 * Add functionality to iterate through game solvers (Java reflection?)
+  * For now, user-input solver is hard-coded into program.
 * Have the solver(s) play the game, printing sensible output throughout at a human-readable pace?
 * Ensure player and engine input/output is valid
 * Ensure integrity of dictionary
@@ -108,9 +109,9 @@ TODO: enforce
 * Add full javadoc comments after implementing each feature in source code. Remove "TODO: implement" line from `README.md`.
 
 # Future features / TODO
-* Decide on logging/println philosophy
 * Implementation for Wordle engine and game
 * Implementation for user-based solver (i.e. let the user play the game and input guesses into the program through the keyboard)
+* Clean up packaging and access restriction practices
 * Test everything
 * Implementation for personal Wordle solver(s)
 * Some integrity checks to ensure word length consistency throughout

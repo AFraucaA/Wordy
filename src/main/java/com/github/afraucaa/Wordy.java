@@ -1,4 +1,6 @@
-package com.github.afraucaa.Wordy;
+package com.github.afraucaa;
+
+import com.github.afraucaa.wordy.WordyEngine;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-class Wordy {
+public class Wordy {
     /**
      * Driver program for playing Wordy and testing Wordy solvers.
      * @since 0.1
@@ -31,7 +33,7 @@ class Wordy {
         final Path candidateWordsPath = basePath.resolve("resources/dictionary/candidates.txt");
         final Path nonCandidateWordsPath = basePath.resolve("resources/dictionary/non_candidates.txt");
 
-
+        
 
 
         ArrayList<String> candidateWords;
