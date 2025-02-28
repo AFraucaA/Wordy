@@ -58,6 +58,7 @@ class Wordy {
      * @param Path path to text file where each line in the text is a word.
      * @return ArrayList<String> a list of all the words contained in the file.
      */
+    @SuppressWarnings("CallToPrintStackTrace")
     private static ArrayList<String> readWordsFromFile(Path filePath) {
         ArrayList<String> words = new ArrayList<>();
         try {
