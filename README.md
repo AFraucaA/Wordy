@@ -56,13 +56,11 @@ TODO:
 * **int** the maximum number of guesses allowed
 * **int** a random seed to generate new games. If none provided, will generate its own.
 
-### boolean newGame()
-TODO: implement
+### void newGame()
 Initializes a new game. Resetting the number of guesses and the answer word.
-* **returns** true if the game was reset successfully, false otherwise.
 
 ### Array<int> checkGuess(String guess) throws IllegalArgumentException
-TODO: implement
+TODO: optimize checking algorithm?
 Checks the guess against the true answer and returns feedback as per Wordle specifications, if there's guesses left. Updates the guess ounter. Throws if the guess is not the right length, or if no more guesses are permitted.
 * **returns** an array containing information about the guess. See `Wordy Guess Feedback` section.
 * **throws** IllegalArgumentException if the guess does not have five letters, as per Wordle specifications, or if there's no guesses left.
@@ -113,6 +111,7 @@ TODO: enforce
 * Decide on logging/println philosophy
 * Implementation for Wordle engine and game
 * Implementation for user-based solver (i.e. let the user play the game and input guesses into the program through the keyboard)
+* Test everything
 * Implementation for personal Wordle solver(s)
 * Some integrity checks to ensure word length consistency throughout
 * Features to test the performance of a solver (success rate, guess count distribution, time performance), which generates a random set of words based on a seed.
