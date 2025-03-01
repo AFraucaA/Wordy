@@ -1,8 +1,5 @@
 package com.github.afraucaa;
 
-import com.github.afraucaa.wordy.WordyEngine;
-import com.github.afraucaa.wordy.WordyPlayer;
-import com.github.afraucaa.wordysolvers.UserInputPlayer;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,19 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.github.afraucaa.wordy.WordyEngine;
+import com.github.afraucaa.wordy.WordyPlayer;
+import com.github.afraucaa.wordysolvers.UserInputPlayer;
+
+/**
+ * Driver program for playing Wordy and testing Wordy solvers.
+ * @since 0.1
+ * 
+ * Loads dictionary from project files. Instantiates game engine.
+ * 
+ * TODO:
+ * <ul>
+ *   <li> Add functionality to iterate through game solvers (Java reflection?)
+ *   <li> Have the solver(s) play the game, printing sensible output throughout at a human-readable pace?
+ * </ul>
+ */
 public class Wordy {
-    /**
-     * Driver program for playing Wordy and testing Wordy solvers.
-     * @since 0.1
-     * 
-     * Loads dictionary from project files. Instantiates game engine.
-     * 
-     * TODO:
-     * <ul>
-     *   <li> Add functionality to iterate through game solvers (Java reflection?)
-     *   <li> Have the solver(s) play the game, printing sensible output throughout at a human-readable pace?
-     * </ul>
-     */
     public static void main(String[] args) {
         System.out.println("Initiated Wordy game.");
         Logger logger = Logger.getLogger("MyLogger");
@@ -63,13 +64,41 @@ public class Wordy {
             feedback.set(i, 0);
         }
 
-        while (engine.getGuessesLeft() > 0) {
+        boolean correctGuess = false;
+        while (!correctGuess && engine.getGuessesLeft() > 0) {
             String guess = player.newGuess(feedback, engine.getGuessesLeft());
             // TO DO: add guess validation here? At this point, assume guess is legal
             feedback = engine.checkGuess(guess);
             // Print stuff here
-
+            System.out.println("\t"+guess);
+            System.out.print('\t');
+            for (int i = 0; i < WORD_LENGTH; i+=1) {
+                System.out.print(
+                    switch (feedback.get(i)) {
+                    case 2 -> 'X';
+                    case 1 -> 'x';
+                    default -> ' ';
+                });
+            }
+            System.out.print('\n');
+            //Check whether the guess is correct
+            correctGuess = true;
+            for (int i = 0; i < WORD_LENGTH; i+=1) {
+                if (feedback.get(i) != 2) {
+                    correctGuess = false;
+                }
+            }
         }
+        //Game finishes
+        String answer = engine.endGame();
+        System.out.println("Game over.");
+        if (correctGuess) {
+            System.out.println("Congrats! You guessed the right word!");
+        }
+        else {
+            System.out.println("You ran out of guesses.");
+        }
+        System.out.println("The answer was:\n\t" + answer + "\nThanks for playing!");
     }
 
     /**
