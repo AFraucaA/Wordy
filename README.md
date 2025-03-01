@@ -5,7 +5,7 @@
 
 **date of creation** February 27, 2025
 
-**version** 0.1
+**version** 1.0.0 - minimal viable product working.
 
 Personal challenge to create an efficient Wordle solver using some cool math ideas. 
 
@@ -110,6 +110,8 @@ TODO: enforce
 
 # Future features / TODO
 * Implementation for Wordle engine and game
+* Use Array instead of ArrayList for all guess feedback objects
+* Abstract away guess feedback class?
 * Implementation for user-based solver (i.e. let the user play the game and input guesses into the program through the keyboard)
 * Document UserInputPlayer methods
 * Document all classes
@@ -128,4 +130,5 @@ TODO: enforce
   * Possible answer: make a requestNewGame abstract method that returns false by default, but which UserInputPlayer overrides to request a new game
 
 # Miscellaneous notes
+**2025-03-01** Minimal viable product working. Officially at version 1.0.0. Paper still isn't writing itself but maybe it will soon. *~Adrian*
 **2025-02-27** Repo created. I should be studying for midterms right now. *~Adrian*

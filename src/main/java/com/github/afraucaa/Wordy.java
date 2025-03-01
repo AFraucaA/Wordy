@@ -33,8 +33,8 @@ public class Wordy {
         final int WORD_LENGTH = 5;
         final int maxGuesses = 6;
         final Path basePath = Paths.get("").toAbsolutePath().getParent().getParent().getParent();
-        final Path candidateWordsPath = basePath.resolve("resources/dictionary/candidates.txt");
-        final Path nonCandidateWordsPath = basePath.resolve("resources/dictionary/non_candidates.txt");
+        final Path candidateWordsPath = basePath.resolve("src/main/resources/dictionary/candidates.txt");
+        final Path nonCandidateWordsPath = basePath.resolve("src/main/resources/dictionary/non_candidates.txt");
 
         
         // Populate lists from files

@@ -92,8 +92,8 @@ public class WordyEngine {
         ArrayList answerMatches = new ArrayList<Integer>(WORD_LENGTH); // Status of each letter in the correct answer (no match or match with some letter in the guess)
         //Initialize both arrays
         for (int i = 0; i < WORD_LENGTH; i+=1) {
-            guessFeedback.set(i, -1);
-            answerMatches.set(i, 0);
+            guessFeedback.add(i, -1);
+            answerMatches.add(i, 0);
         }
         // First, check for exact matches.
         for (int i = 0; i < WORD_LENGTH; i+=1) {
@@ -124,7 +124,7 @@ public class WordyEngine {
             //TODO: add logging here and some other places ig
             endGame();
         }
-        System.out.println("Checking guess "+ guess+ ". Does nothing yet. Guess counter is now " +currentGuessesLeft);
+        System.out.println("Checking guess "+ guess+ ". Guess counter is now " +currentGuessesLeft);
         return guessFeedback;
     }
     /**
